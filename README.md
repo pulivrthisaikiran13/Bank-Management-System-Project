@@ -1,6 +1,3 @@
-# Bank-Management-System
-
-
 # Bank Management System (Python + MySQL)
 
 A simple command-line banking system built with Python and MySQL.  
