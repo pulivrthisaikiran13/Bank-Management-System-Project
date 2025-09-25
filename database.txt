@@ -1,0 +1,58 @@
+
+-------- User Table ----------
+
+
+create database bank_system;
+use bank_system;
+
+create table users (
+account_no int auto_increment primary key, 
+name varchar(30), 
+pin int, 
+account_type varchar(15), 
+balance double default 0);
+
+alter table users add column account_number char(12) unique;
+select * from users;
+
+insert into users (account_no, name, pin, account_type, balance) values 
+(2, 'Kiran', 1235, 'Current', 80000.75),
+(3, 'Srikanth', 2580, 'Savings', 75208.26),
+(4, 'Raju', 1470, 'Current', 25038.78);
+
+alter table users drop column account_number;
+
+
+update users set balance=50000.00 where account_no=1;
+
+
+
+----------- Transaction Table --------------
+
+
+use bank_system;
+
+create table transactions (
+txn_id int auto_increment primary key,
+account_no int,
+txn_type varchar(20),
+amount double,
+txn_date timestamp default current_timestamp,
+foreign key(account_no) references users(account_no));
+
+
+
+------------ Admin Table ------------------
+
+
+use bank_system;
+
+create table admins (
+admin_id int primary key auto_increment,
+password varchar(20));
+
+select * from admins;
+alter table admins add column username varchar(20);
+
+insert into admins (username, password) values('admin', 'admin@123');
+
